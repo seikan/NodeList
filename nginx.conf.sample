@@ -1,0 +1,43 @@
+server {
+	server_name node-list.example.com;
+	root /var/www/node-list.example.com;
+	access_log /var/log/nginx/node-list.example.com-access.log;
+	error_log /var/log/nginx/node-list.example.com-error.log;
+
+	index index.php index.html;
+
+	location ~ \.php$ {
+		try_files $uri =404;
+		fastcgi_pass php5-fpm-sock;
+		fastcgi_index index.php;
+		include fastcgi.conf;
+	}
+
+	location = /favicon.ico {
+		log_not_found off;
+		access_log off;
+	}
+
+	location = /robots.txt {
+		allow all;
+		log_not_found off;
+		access_log off;
+	}
+
+	location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+		expires max;
+	}
+
+	location ~* \.(txt|log|db)$ {
+		deny all;
+	}
+
+	location / {
+		try_files $uri $uri/ @rewrite;
+	}
+
+	location @rewrite {
+		rewrite ^/(.+).json$ /index.php?q=json.$1.php last;
+		rewrite ^/(.*)$ /index.php?page=$1 last;
+	}
+}
