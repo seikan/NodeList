@@ -26,7 +26,7 @@ $machine->update('machine_id', '=' . $machineId, array(
 	'due_date'	=> date('Y-m-d', strtotime($row[0]['due_date'] . ' +' . $months[$row[0]['billing_cycle']] . ' months')),
 ));
 
-$session->set('response', '<div class="alert alert-success"><span><i class="fa fa-check-circle"></i> "' . $row[0]['label'] . '" has been renewed.</span></div>');
+$session->set('response', '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><span><i class="fa fa-check-circle"></i> "' . $row[0]['label'] . '" has been renewed.</span></div>');
 
 die(json_encode(array(
 	'status'	=> 'OK',

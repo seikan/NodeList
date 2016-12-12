@@ -14,8 +14,11 @@ if(isset($_GET['action']) && $_GET['action'] == 'sign-out'){
 	setcookie('auth', NULL, -1);
 
 	$session->set('response', '
-	<div class="alert alert-info">
-		<span><i class="fa fa-exclamation-triangle"></i> You has been signed out.</span>
+	<div class="alert alert-info alert-dismissible">
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+		<span><i class="fa fa-exclamation-triangle"></i> You have been signed out.</span>
 	</div>');
 
 	die(header('Location: ' . getURL('sign-in')));
@@ -45,7 +48,10 @@ if($session->get('username'))
 if(!empty($errors)){
 	foreach($errors as $error){
 		$response .= '
-		<div class="alert alert-danger">
+		<div class="alert alert-danger alert-dismissible">
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
 			<span><i class="fa fa-exclamation-triangle"></i> ' . $error . '</span>
 		</div>';
 	}
@@ -55,7 +61,7 @@ require_once INCLUDES . 'header.php';
 ?>
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-4">
+				<div class="col-lg-4 col-lg-offset-4">
 					<form action="<?php echo getURL('sign-in', (($return) ? array('return', rawurlencode($return)) : array())); ?>" method="post" role="form" class="form">
 						<?php echo $response; ?>
 						<div class="form-group">
