@@ -15,6 +15,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'sign-out'){
 
 	$session->set('response', '
 	<div class="alert alert-info alert-dismissible">
+	  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		<span><i class="fa fa-exclamation-triangle"></i> You have been signed out.</span>
 	</div>');
 
@@ -46,6 +47,7 @@ if(!empty($errors)){
 	foreach($errors as $error){
 		$response .= '
 		<div class="alert alert-danger alert-dismissible">
+		  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 			<span><i class="fa fa-exclamation-triangle"></i> ' . $error . '</span>
 		</div>';
 	}
@@ -55,7 +57,7 @@ require_once INCLUDES . 'header.php';
 ?>
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-4">
+				<div class="col-lg-4 col-lg-offset-4">
 					<form action="<?php echo getURL('sign-in', (($return) ? array('return', rawurlencode($return)) : array())); ?>" method="post" role="form" class="form">
 						<?php echo $response; ?>
 						<div class="form-group">

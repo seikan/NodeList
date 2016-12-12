@@ -97,7 +97,7 @@ echo '
 				<div class="col-lg-6">
 					<h1>Setup</h1>
 
-					' . ((!empty($errors)) ? '<div class="alert alert-danger alert-dismissible">' . implode('<br />', $errors) . '</div>' : '' ) . '
+					' . ((!empty($errors)) ? '<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' . implode('<br />', $errors) . '</div>' : '' ) . '
 
 					<form method="post">
 						<div class="form-group">
