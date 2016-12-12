@@ -15,7 +15,9 @@ if(isset($_GET['action']) && $_GET['action'] == 'sign-out'){
 
 	$session->set('response', '
 	<div class="alert alert-info alert-dismissible">
-	  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
 		<span><i class="fa fa-exclamation-triangle"></i> You have been signed out.</span>
 	</div>');
 
@@ -47,7 +49,9 @@ if(!empty($errors)){
 	foreach($errors as $error){
 		$response .= '
 		<div class="alert alert-danger alert-dismissible">
-		  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
 			<span><i class="fa fa-exclamation-triangle"></i> ' . $error . '</span>
 		</div>';
 	}

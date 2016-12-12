@@ -581,7 +581,7 @@ $provider = new SimpleDB(DATABASES . 'provider_' . $config['key'] . '.db', 'prov
 
 if(isset($_POST['remove'])){
 	$machine->delete('machine_id', '=' . $_POST['remove']);
-	$session->set('response', '<div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><span><i class="fa fa-check-circle"></i> The machine has been removed.</span></div>');
+	$session->set('response', '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><span><i class="fa fa-check-circle"></i> The machine has been removed.</span></div>');
 }
 
 if(isset($_POST['hideInactiveVM']))
@@ -684,7 +684,7 @@ require_once INCLUDES . 'header.php';
 					else{
 						echo '
 						<div class="alert alert-info alert-dismissible">
-						  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 							<span><i class="fa fa-exclamation-circle"></i> There is no machine added.</span>
 						</div>';
 					}

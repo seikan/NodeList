@@ -4,7 +4,7 @@ defined('INDEX') or die('Access is denied.');
 if(!$session->get('username'))
 	die(json_encode(array(
 		'status'	=> 'ERROR',
-		'response'	=> '<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><span><i class="fa fa-exclamation-triangle"></i> Session expired. Please sign in again to continue.</span></div>',
+		'response'	=> '<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><span><i class="fa fa-exclamation-triangle"></i> Session expired. Please sign in again to continue.</span></div>',
 		'id'		=> 'label',
 	)));
 
@@ -37,91 +37,91 @@ $notes = (isset($_POST['notes'])) ? $_POST['notes'] : '';
 if(empty($label))
 	die(json_encode(array(
 		'status'	=> 'ERROR',
-		'response'	=> '<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><span><i class="fa fa-exclamation-triangle"></i> Please insert a label.</span></div>',
+		'response'	=> '<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><span><i class="fa fa-exclamation-triangle"></i> Please insert a label.</span></div>',
 		'id'		=> 'label',
 	)));
 
 if(mb_strlen($label) > 100)
 	die(json_encode(array(
 		'status'	=> 'ERROR',
-		'response'	=> '<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><span><i class="fa fa-exclamation-triangle"></i> Label exceed 100 characters in length.</span></div>',
+		'response'	=> '<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><span><i class="fa fa-exclamation-triangle"></i> Label exceed 100 characters in length.</span></div>',
 		'id'		=> 'label',
 	)));
 
 if(!in_array($vmType, array(1, 2, 3, 4, 5)))
 	die(json_encode(array(
 		'status'	=> 'ERROR',
-		'response'	=> '<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><span><i class="fa fa-exclamation-triangle"></i> Please select a virtualization type.</span></div>',
+		'response'	=> '<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><span><i class="fa fa-exclamation-triangle"></i> Please select a virtualization type.</span></div>',
 		'id'		=> 'type',
 	)));
 
 if(!preg_match('/^\d+$/', $memory))
 	die(json_encode(array(
 		'status'	=> 'ERROR',
-		'response'	=> '<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><span><i class="fa fa-exclamation-triangle"></i> Please insert integer only for memory amount.</span></div>',
+		'response'	=> '<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><span><i class="fa fa-exclamation-triangle"></i> Please insert integer only for memory amount.</span></div>',
 		'id'		=> 'memory',
 	)));
 
 if(!in_array($memoryUnit, $units))
 	die(json_encode(array(
 		'status'	=> 'ERROR',
-		'response'	=> '<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><span><i class="fa fa-exclamation-triangle"></i> Please select a valid unit for memory.</span></div>',
+		'response'	=> '<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><span><i class="fa fa-exclamation-triangle"></i> Please select a valid unit for memory.</span></div>',
 		'id'		=> 'memoryUnit',
 	)));
 
 if(!preg_match('/^\d+$/', $swap))
 	die(json_encode(array(
 		'status'	=> 'ERROR',
-		'response'	=> '<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><span><i class="fa fa-exclamation-triangle"></i> Please insert integer only for swap amount.</span></div>',
+		'response'	=> '<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><span><i class="fa fa-exclamation-triangle"></i> Please insert integer only for swap amount.</span></div>',
 		'id'		=> 'swap',
 	)));
 
 if(!in_array($swapUnit, $units))
 	die(json_encode(array(
 		'status'	=> 'ERROR',
-		'response'	=> '<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><span><i class="fa fa-exclamation-triangle"></i> Please select a valid unit for swap.</span></div>',
+		'response'	=> '<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><span><i class="fa fa-exclamation-triangle"></i> Please select a valid unit for swap.</span></div>',
 		'id'		=> 'swapUnit',
 	)));
 
 if(!preg_match('/^\d+$/', $diskSpace))
 	die(json_encode(array(
 		'status'	=> 'ERROR',
-		'response'	=> '<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><span><i class="fa fa-exclamation-triangle"></i> Please insert integer only for disk space amount.</span></div>',
+		'response'	=> '<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><span><i class="fa fa-exclamation-triangle"></i> Please insert integer only for disk space amount.</span></div>',
 		'id'		=> 'diskSpace',
 	)));
 
 if(!in_array($diskSpaceUnit, $units))
 	die(json_encode(array(
 		'status'	=> 'ERROR',
-		'response'	=> '<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><span><i class="fa fa-exclamation-triangle"></i> Please select a valid unit for disk space.</span></div>',
+		'response'	=> '<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><span><i class="fa fa-exclamation-triangle"></i> Please select a valid unit for disk space.</span></div>',
 		'id'		=> 'diskSpaceUnit',
 	)));
 
 if(!in_array($hddType, array(1, 2, 3, 4)))
 	die(json_encode(array(
 		'status'	=> 'ERROR',
-		'response'	=> '<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><span><i class="fa fa-exclamation-triangle"></i> Please select a HDD type.</span></div>',
+		'response'	=> '<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><span><i class="fa fa-exclamation-triangle"></i> Please select a HDD type.</span></div>',
 		'id'		=> 'hddType',
 	)));
 
 if(!preg_match('/^\d+$/', $bandwidth))
 	die(json_encode(array(
 		'status'	=> 'ERROR',
-		'response'	=> '<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><span><i class="fa fa-exclamation-triangle"></i> Please insert integer only for bandwidth amount.</span></div>',
+		'response'	=> '<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><span><i class="fa fa-exclamation-triangle"></i> Please insert integer only for bandwidth amount.</span></div>',
 		'id'		=> 'bandwidth',
 	)));
 
 if(!in_array($bandwidthUnit, $units))
 	die(json_encode(array(
 		'status'	=> 'ERROR',
-		'response'	=> '<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><span><i class="fa fa-exclamation-triangle"></i> Please select a valid unit for bandwidth.</span></div>',
+		'response'	=> '<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><span><i class="fa fa-exclamation-triangle"></i> Please select a valid unit for bandwidth.</span></div>',
 		'id'		=> 'bandwidthUnit',
 	)));
 
 if(!is_array($ipAddress))
 	die(json_encode(array(
 		'status'	=> 'ERROR',
-		'response'	=> '<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><span><i class="fa fa-exclamation-triangle"></i> Please insert a valid IP address.</span></div>',
+		'response'	=> '<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><span><i class="fa fa-exclamation-triangle"></i> Please insert a valid IP address.</span></div>',
 		'id'		=> 'ipAddresss',
 	)));
 
@@ -129,14 +129,14 @@ foreach($ipAddress as $ip)
 	if(!filter_var($ip, FILTER_VALIDATE_IP))
 		die(json_encode(array(
 			'status'	=> 'ERROR',
-			'response'	=> '<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><span><i class="fa fa-exclamation-triangle"></i> Please insert a valid IP address.</span></div>',
+			'response'	=> '<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><span><i class="fa fa-exclamation-triangle"></i> Please insert a valid IP address.</span></div>',
 			'id'		=> 'ipAddress\\[\\]',
 		)));
 
 if(!getCountryNameByCode($countryCode))
 	die(json_encode(array(
 		'status'	=> 'ERROR',
-		'response'	=> '<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><span><i class="fa fa-exclamation-triangle"></i> Please select a valid country.</span></div>',
+		'response'	=> '<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><span><i class="fa fa-exclamation-triangle"></i> Please select a valid country.</span></div>',
 		'id'		=> 'countryCode',
 	)));
 
@@ -146,35 +146,35 @@ $provider->select('*', $providerId);
 if($provider->affectedRows() == 0)
 	die(json_encode(array(
 		'status'	=> 'ERROR',
-		'response'	=> '<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><span><i class="fa fa-exclamation-triangle"></i> Please select a provider.</span></div>',
+		'response'	=> '<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><span><i class="fa fa-exclamation-triangle"></i> Please select a provider.</span></div>',
 		'id'		=> 'providerId',
 	)));
 
 if(!in_array($currencyCode, array_keys($config['currencies'])))
 	die(json_encode(array(
 		'status'	=> 'ERROR',
-		'response'	=> '<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><span><i class="fa fa-exclamation-triangle"></i> Please select a valid currency.</span></div>',
+		'response'	=> '<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><span><i class="fa fa-exclamation-triangle"></i> Please select a valid currency.</span></div>',
 		'id'		=> 'currencyCode',
 	)));
 
 if(!preg_match('/^\d+\.\d{2}$/', $price))
 	die(json_encode(array(
 		'status'	=> 'ERROR',
-		'response'	=> '<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><span><i class="fa fa-exclamation-triangle"></i> Please insert a valid figure for price.</span></div>',
+		'response'	=> '<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><span><i class="fa fa-exclamation-triangle"></i> Please insert a valid figure for price.</span></div>',
 		'id'		=> 'price',
 	)));
 
 if(!in_array($billingCycle, array(1, 2, 3, 4, 5)))
 	die(json_encode(array(
 		'status'	=> 'ERROR',
-		'response'	=> '<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><span><i class="fa fa-exclamation-triangle"></i> Please select a valid billing cycle.</span></div>',
+		'response'	=> '<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><span><i class="fa fa-exclamation-triangle"></i> Please select a valid billing cycle.</span></div>',
 		'id'		=> 'billingCycle',
 	)));
 
 if(!empty($dueDate) && !preg_match('/^\d{4}-\d{2}-\d{2}$/', $dueDate))
 	die(json_encode(array(
 		'status'	=> 'ERROR',
-		'response'	=> '<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><span><i class="fa fa-exclamation-triangle"></i> Please insert a valid due date.</span></div>',
+		'response'	=> '<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><span><i class="fa fa-exclamation-triangle"></i> Please insert a valid due date.</span></div>',
 		'id'		=> 'dueDate',
 	)));
 
@@ -206,7 +206,7 @@ if(!$machineId){
 		'notes'				=> html_entity_decode($notes),
 	));
 
-	$session->set('response', '<div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><span><i class="fa fa-check-circle"></i> "' . $label . '" has been added.</span></div>');
+	$session->set('response', '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><span><i class="fa fa-check-circle"></i> "' . $label . '" has been added.</span></div>');
 }
 else{
 	$machine->update('machine_id', '=' . $machineId, array(
@@ -234,7 +234,7 @@ else{
 		'notes'				=> html_entity_decode($notes),
 	));
 
-	$session->set('response', '<div class="alert alert-success alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><span><i class="fa fa-check-circle"></i> "' . $label . '" has been updated.</span></div>');
+	$session->set('response', '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><span><i class="fa fa-check-circle"></i> "' . $label . '" has been updated.</span></div>');
 }
 
 die(json_encode(array(
