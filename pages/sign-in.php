@@ -14,8 +14,8 @@ if(isset($_GET['action']) && $_GET['action'] == 'sign-out'){
 	setcookie('auth', NULL, -1);
 
 	$session->set('response', '
-	<div class="alert alert-info">
-		<span><i class="fa fa-exclamation-triangle"></i> You has been signed out.</span>
+	<div class="alert alert-info alert-dismissible">
+		<span><i class="fa fa-exclamation-triangle"></i> You have been signed out.</span>
 	</div>');
 
 	die(header('Location: ' . getURL('sign-in')));
@@ -45,7 +45,7 @@ if($session->get('username'))
 if(!empty($errors)){
 	foreach($errors as $error){
 		$response .= '
-		<div class="alert alert-danger">
+		<div class="alert alert-danger alert-dismissible">
 			<span><i class="fa fa-exclamation-triangle"></i> ' . $error . '</span>
 		</div>';
 	}

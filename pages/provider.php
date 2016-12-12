@@ -136,10 +136,10 @@ if(isset($_POST['remove'])){
 
 	if($machine->affectedRows() == 0){
 		$provider->delete('provider_id', '=' . $_POST['remove']);
-		$session->set('response', '<div class="alert alert-success"><span><i class="fa fa-check-circle"></i> The provider has been removed.</span></div>');
+		$session->set('response', '<div class="alert alert-success alert-dismissible"><span><i class="fa fa-check-circle"></i> The provider has been removed.</span></div>');
 	}
 	else{
-		$session->set('response', '<div class="alert alert-danger"><span><i class="fa fa-exclamation-circle"></i> Cannot remove provider. There ' . (($machine->affectedRows() > 1) ? 'are ' . $machine->affectedRows() . ' machines' : 'is 1 machine') . ' assigned to this provider.</span></div>');
+		$session->set('response', '<div class="alert alert-danger alert-dismissible"><span><i class="fa fa-exclamation-circle"></i> Cannot remove provider. There ' . (($machine->affectedRows() > 1) ? 'are ' . $machine->affectedRows() . ' machines' : 'is 1 machine') . ' assigned to this provider.</span></div>');
 	}
 }
 
@@ -212,7 +212,7 @@ require_once INCLUDES . 'header.php';
 					}
 					else{
 						echo '
-						<div class="alert alert-info">
+						<div class="alert alert-info alert-dismissible">
 							<span><i class="fa fa-exclamation-circle"></i> There is no provider added.</span>
 						</div>';
 					}
