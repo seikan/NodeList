@@ -8,7 +8,7 @@ server {
 
 	location ~ \.php$ {
 		try_files $uri =404;
-		fastcgi_pass php5-fpm-sock;
+		fastcgi_pass php-fpm-sock;
 		fastcgi_index index.php;
 		include fastcgi.conf;
 	}
@@ -37,7 +37,7 @@ server {
 	}
 
 	location @rewrite {
-		rewrite ^/(.+).json$ /index.php?q=json.$1.php last;
-		rewrite ^/(.*)$ /index.php?page=$1 last;
+		rewrite ^/(.+).json$ /index.php?_PAGE=json.$1.php last;
+		rewrite ^/(.*)$ /index.php?_PAGE=$1 last;
 	}
 }

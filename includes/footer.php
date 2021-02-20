@@ -1,18 +1,25 @@
-		<script src="//code.jquery.com/jquery-3.1.0.min.js" type="text/javascript"></script>
-		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" type="text/javascript"></script>
+		<footer class="footer mt-auto py-3 text-center">
+			<div class="container text-secondary">
+				<i class="fa fa-github"></i> <a href="https://github.com/seikan/NodeList" target="_blank" class="text-secondary">Node List</a>
+			</div>
+		</footer>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.bundle.min.js"></script>
 
 		<?php
-		if(isset($js) && is_array($js))
+		if (isset($js) && is_array($js)) {
 			echo "\t\t<script src=\"" . implode("\" type=\"text/javascript\"></script>\n\t\t<script src=\"", $js) . "\" type=\"text/javascript\"></script>\n\n";
+		}
 
-		if(isset($scripts)){
-			echo "\t\t" . implode("\n\t\t", array(
+		if (isset($scripts)) {
+			echo "\t\t" . implode("\n\t\t", [
 				'<script>',
 				'<!--',
 				trim($scripts),
 				'//-->',
 				'</script>',
-			)) . "\n\n";
+			]) . "\n\n";
 		}
 		?>
 

@@ -1,0 +1,8 @@
+textarea{resize:none}
+input[type="text"],input[type="email"],input[type="search"],input[type="password"],input[type="number"],textarea{-webkit-appearance:none;-webkit-box-shadow:none !important;-moz-box-shadow:none !important;box-shadow:none !important}
+.machine-name,.machine-ip{cursor:pointer}
+.machine-ip .fa{visibility:hidden}
+.machine-ip:hover .fa{visibility:visible}
+.badge-hdd{font-size:8px;display:block}
+.swap{font-size:10px;color:var(--secondary)}
+.nat{font-size:6px;position:absolute;margin-top:-6px}

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
 	<head>
 		<meta charset="utf-8">
 		<title>Node List</title>
@@ -7,66 +7,55 @@
 		<meta name="format-detection" content="telephone=no">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-		<link rel="stylesheet" href="./includes/css/style.css">
-
-		<link rel="apple-touch-icon" href="./images/icon.png" />
-
-		<!--[if lt IE 9]>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
-		<![endif]-->
+		<link rel="shortcut icon" href="./favicon.ico">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.5.3/flatly/bootstrap.min.css" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
 		<?php
-		if(isset($css) && is_array($css))
-			echo "<link href=\"" . implode("\" rel=\"stylesheet\" type=\"text/css\" media=\"screen\" />\n\t\t<link href=\"", $css) . "\" rel=\"stylesheet\" type=\"text/css\" media=\"screen\" />\n\n";
+		if (isset($css) && is_array($css)) {
+			echo '	<link href="' . implode("\" rel=\"stylesheet\" type=\"text/css\" media=\"screen\" />\n\t\t<link href=\"", $css) . "\" rel=\"stylesheet\" type=\"text/css\" media=\"screen\" />\n\n";
+		}
 
-		if(isset($styles)){
-			echo "\t\t" . implode("\n\t\t", array(
+		if (isset($styles)) {
+			echo "\t\t" . implode("\n\t\t", [
 				'<style type="text/css">',
 				'<!--',
 				"\t" . $styles,
 				'//-->',
 				'</style>',
-			)) . "\n\n";
+			]) . "\n\n";
 		}
 		?>
+
+		<link rel="stylesheet" href="./assets/css/style.css">
+		<link rel="apple-touch-icon" href="./assets/img/icon.png" />
 	</head>
 
-	<body>
-		<div class="navbar navbar-default navbar-fixed-top">
+	<body class="d-flex flex-column h-100">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-secondary fixed-top">
 			<div class="container">
-				<div class="navbar-header">
-					<a href="./" class="navbar-brand">
-						<span class="fa-stack fa-lg">
-							<i class="fa fa-circle fa-stack-2x"></i>
-							<i class="fa fa-rocket fa-stack-1x fa-inverse"></i>
-						</span>
-					</a>
-
-					<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-				</div>
-
-				<div class="navbar-collapse collapse" id="navbar-main">
-					<ul class="nav navbar-nav">
-						<li<?php if($_PAGE == 'machine') echo ' class="active"'; ?>><a href="<?php echo getURL('machine'); ?>">Machines</a></li>
-						<li<?php if($_PAGE == 'provider') echo ' class="active"'; ?>><a href="<?php echo getURL('provider'); ?>">Providers</a></li>
+				<a class="navbar-brand" href="./"><img src="./assets/img/icon.png" width="32" height="32" align="absmiddle" title="Node List" alt="Node List"></a>
+				<?php if (!preg_match('/setup\.php$/', $GLOBALS['PAGE']->getCurrentUrl()) && $GLOBALS['SESSION']->get('username')): ?>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav nav-pills nav-fill mr-auto">
+						<li class="nav-item mr-3">
+							<a class="nav-link<?php if ($_PAGE == 'machine'): echo ' active'; endif; ?>" aria-current="page" href="<?php echo getUrl('machine'); ?>"><i class="fa fa-server"></i> Machines</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link<?php if ($_PAGE == 'provider'): echo ' active'; endif; ?>" href="<?php echo getUrl('provider'); ?>"><i class="fa fa-users"></i> Providers</a>
+						</li>
 					</ul>
 
-					<?php
-					if($session->get('username'))
-						echo '
-						<ul class="nav navbar-nav navbar-right">
-							<li><a href="' . getURL('sign-in', array(
-								'action'	=> 'sign-out'
-							)) . '"><i class="fa fa-sign-out"></i> Sign Out</a></li>
-						</ul>';
-					?>
+					<ul class="navbar-nav">
+						<li><a href="<?php echo getUrl('sign-in', [
+							'action' => 'sign-out',
+						]); ?>" class="text-light"><i class="fa fa-sign-out"></i> Sign Out</a></li>
+					</ul>
 				</div>
+				<?php endif; ?>
 			</div>
-		</div>
+		</nav>
