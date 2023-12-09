@@ -1,5 +1,7 @@
 # Node List
 
+> This project is renamed to **Carotu** and moved to https://github.com/seikan/carotu
+
 This is a PHP web application I wrote to keep track all my VPS and dedicated servers.  It utilized some library written by myself. This application is storing records in CSV format. It's recommended to use by only yourself.
 
 
